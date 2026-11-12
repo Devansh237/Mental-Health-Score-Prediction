@@ -272,12 +272,12 @@
       }
 
       const data = await res.json();
-      if (typeof data.predicted_mental_health_score !== "number") {
+      if (typeof data.predicted_score !== "number") {
         renderError("Unexpected response", "The API responded, but the score was missing or malformed.");
         return;
       }
 
-      renderResult(data.predicted_mental_health_score);
+      renderResult(data.predicted_score);
     } catch (err) {
       renderError(
         "Can't reach the server",

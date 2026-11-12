@@ -272,16 +272,16 @@
       }
 
       const data = await res.json();
-      if (typeof data.predicted_score !== "number") {
+      if (typeof data.predicted_mental_health_score !== "number") {
         renderError("Unexpected response", "The API responded, but the score was missing or malformed.");
         return;
       }
 
-      renderResult(data.predicted_score);
+      renderResult(data.predicted_mental_health_score);
     } catch (err) {
       renderError(
         "Can't reach the server",
-        `Couldn't connect to ${API_BASE}. Make sure the backend is running (uvicorn main:app --reload --port 8000) from the project folder and reachable from this page.`
+        `Couldn't connect to ${API_BASE}. Make sure the backend is running (uvicorn main:app --port 2200 --reload) and reachable from this page.`
       );
     } finally {
       setSubmitting(false);
